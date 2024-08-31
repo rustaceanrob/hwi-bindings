@@ -1,0 +1,32 @@
+[package]
+name = "calculator-ffi"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["staticlib", "cdylib"]
+name = "calculatorffi"
+
+[[bin]]
+name = "uniffi-bindgen"
+path = "uniffi-bindgen.rs"
+
+[features]
+default = ["uniffi/cli"]
+
+[dependencies]
+uniffi = { version = "=0.28.0" }
+
+[build-dependencies]
+uniffi = { version = "=0.28.0", features = ["build"] }
+
+[dev-dependencies]
+uniffi = { version = "=0.28.0", features = ["bindgen-tests"] }
+
+[profile.release-smaller]
+inherits = "release"
+opt-level = 'z'     # Optimize for size.
+lto = true          # Enable Link Time Optimization
+codegen-units = 1   # Reduce number of codegen units to increase optimizations.
+panic = 'abort'     # Abort on panic
+strip = 'debuginfo' # Strip symbols from binary

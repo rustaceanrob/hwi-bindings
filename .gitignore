@@ -1,0 +1,29 @@
+# Rust
+target/
+Cargo.lock
+
+# Kotlin
+.idea/
+calculator-bindings.iml
+libcalculatorffi.so
+libcalculatorffi.dylib
+calculator.kt
+local.properties
+.DS_Store
+
+# Swift
+/.build
+/.swiftpm
+/Packages
+/*.xcodeproj
+xcuserdata/
+DerivedData/
+.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
+calculatorFFI.xcframework.zip
+calculatorFFI
+*.a
+Calculator.swift
+calculatorFFI.h
+.build
+.swiftpm
+calculatorFFI.xcframework/
