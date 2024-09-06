@@ -1,0 +1,24 @@
+namespace hwi {};
+
+enum DeviceKind {
+  "BitBox02",
+  "Coldcard",
+  "Specter",
+  "SpecterSimulator",
+  "Ledger",
+  "LedgerSimulator",
+  "Jade",
+};
+
+[Error]
+interface GenericError {
+  Any();
+};
+
+interface Device {
+  [Async, Throws=GenericError]
+  constructor(DeviceKind kind);
+
+  [Async, Throws=GenericError]
+  string get_master_xpub();
+};

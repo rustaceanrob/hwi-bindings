@@ -1,11 +1,11 @@
 [package]
-name = "calculator-ffi"
+name = "hwi-ffi"
 version = "0.1.0"
 edition = "2021"
 
 [lib]
 crate-type = ["staticlib", "cdylib"]
-name = "calculatorffi"
+name = "hwiffi"
 
 [[bin]]
 name = "uniffi-bindgen"
@@ -16,6 +16,9 @@ default = ["uniffi/cli"]
 
 [dependencies]
 uniffi = { version = "=0.28.0" }
+async-hwi = "0.0.22"
+bitcoin = "0.31.2"
+tokio = { version = "1", default-features = false, features = [ "sync" ] }
 
 [build-dependencies]
 uniffi = { version = "=0.28.0", features = ["build"] }

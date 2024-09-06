@@ -1,0 +1,7 @@
+[bindings.kotlin]
+package_name = "org.rustylibs.hwi"
+cdylib_name = "hwiffi"
+
+[bindings.swift]
+module_name = "HWI"
+cdylib_name = "hwiffi"

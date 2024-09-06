@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("org.rustyapps.calculator", appContext.packageName)
+        assertEquals("org.rustyapps.hwi", appContext.packageName)
     }
 }

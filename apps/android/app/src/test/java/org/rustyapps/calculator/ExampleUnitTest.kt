@@ -1,4 +1,4 @@
-package org.rustyapps.calculator
+package org.rustyapps.hwi
 
 import org.junit.Test
 
