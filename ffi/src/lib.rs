@@ -1,15 +1,29 @@
 use std::sync::Arc;
 
-pub use async_hwi::DeviceKind;
 use async_hwi::{ledger::LedgerSimulator, HWI};
 use bitcoin::bip32::DerivationPath;
 use tokio::sync::Mutex;
 
+type DeviceKind = async_hwi::DeviceKind;
+
+#[uniffi::remote(Enum)]
+pub enum DeviceKind {
+    BitBox02,
+    Coldcard,
+    Specter,
+    SpecterSimulator,
+    Ledger,
+    LedgerSimulator,
+    Jade,
+}
+#[derive(uniffi::Object)]
 pub struct Device {
     hwi: Arc<Mutex<dyn HWI + Send + Sync>>,
 }
 
+#[uniffi::export]
 impl Device {
+    #[uniffi::constructor()]
     async fn new(kind: DeviceKind) -> Result<Self, GenericError> {
         match kind {
             DeviceKind::LedgerSimulator => Ok(Self {
@@ -34,7 +48,7 @@ impl Device {
     }
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, uniffi::Error)]
 pub enum GenericError {
     Any,
 }
